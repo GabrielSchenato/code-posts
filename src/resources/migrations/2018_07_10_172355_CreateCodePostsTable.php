@@ -18,6 +18,7 @@ class CreateCodePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('content');
+            $table->string('slug');
             $table->timestamps();
         });
     }
