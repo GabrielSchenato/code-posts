@@ -23,7 +23,7 @@ class CodePostServiceProvider extends ServiceProvider
 
     public function register()
     {
-         $this->app->bind(PostRepositoryInterface::class, PostRepositoryEloquent::class);
+        $this->app->bind(PostRepositoryInterface::class, PostRepositoryEloquent::class);
     }
 
 }
