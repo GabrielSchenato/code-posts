@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef6a1c97e0b76b6bbb8014d5b9e827a2",
+    "content-hash": "f1c0928ce224ddbf9318b6618d19aa43",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1036,16 +1036,16 @@
         },
         {
             "name": "schenato/code-category",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schenato/code-category.git",
-                "reference": "a1cb0bbb0812e4e04f0630e042ad09640b8c198d"
+                "reference": "addb6e92166bfd786fe53dca05f13fff6d1d23dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schenato/code-category/zipball/a1cb0bbb0812e4e04f0630e042ad09640b8c198d",
-                "reference": "a1cb0bbb0812e4e04f0630e042ad09640b8c198d",
+                "url": "https://api.github.com/repos/schenato/code-category/zipball/addb6e92166bfd786fe53dca05f13fff6d1d23dd",
+                "reference": "addb6e92166bfd786fe53dca05f13fff6d1d23dd",
                 "shasum": ""
             },
             "require": {
@@ -1086,7 +1086,7 @@
                 "controller",
                 "laravel"
             ],
-            "time": "2018-07-10T19:13:31+00:00"
+            "time": "2018-07-11T17:13:00+00:00"
         },
         {
             "name": "schenato/code-database",

@@ -112,5 +112,4 @@ class PostTest extends AbstractTestCase
         $post = Post::whereSlug("post-test-1")->get()->first();   
         $this->assertInstanceOf(Post::class, $post);
     }
-
 }

@@ -3,9 +3,11 @@
 namespace CodePress\CodePosts\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use CodePress\CodePosts\Repository\PostRepositoryInterface;
+use CodePress\CodePosts\Repository\PostRepositoryEloquent;
 
 /**
- * Description of CodeCategoryServiceProvider
+ * Description of CodePostServiceProvider
  *
  * @author gabriel
  */
@@ -21,6 +23,7 @@ class CodePostServiceProvider extends ServiceProvider
 
     public function register()
     {
+         $this->app->bind(PostRepositoryInterface::class, PostRepositoryEloquent::class);
     }
 
 }
