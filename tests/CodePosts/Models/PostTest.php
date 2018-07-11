@@ -112,4 +112,17 @@ class PostTest extends AbstractTestCase
         $post = Post::whereSlug("post-test-1")->get()->first();   
         $this->assertInstanceOf(Post::class, $post);
     }
+    
+    public function test_can_add_comments()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post->comments()->create(['content' => 'Comentario 1 do meu post']);
+        $post->comments()->create(['content' => 'Comentario 2 do meu post']);
+        
+        $comments = Post::find(1)->comments;
+        
+        $this->assertCount(2, $comments);
+        $this->assertEquals('Comentario 1 do meu post', $comments[0]->content);
+        $this->assertEquals('Comentario 2 do meu post', $comments[1]->content);
+    }
 }
