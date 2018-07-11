@@ -109,6 +109,8 @@ class PostTest extends AbstractTestCase
         $this->assertEquals($post->slug, "post-test");
         $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
         $this->assertEquals($post->slug, "post-test-1");
+        $post = Post::whereSlug("post-test-1")->get()->first();   
+        $this->assertInstanceOf(Post::class, $post);
     }
 
 }
