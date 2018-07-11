@@ -15,7 +15,7 @@ class Comment extends Model
 
     protected $table = "codepress_comments";
     protected $fillable = [
-        'content'
+        'content', 'post_id'
     ];
     
     private $validator;
