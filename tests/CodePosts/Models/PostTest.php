@@ -102,5 +102,13 @@ class PostTest extends AbstractTestCase
         $post->title = null;
         $this->assertFalse($post->isValid());
     }
+    
+    public function test_can_sluggable()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $this->assertEquals($post->slug, "post-test");
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $this->assertEquals($post->slug, "post-test-1");
+    }
 
 }
