@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Validation\Validator;
 
 /**
- * Description of Category
+ * Description of Post
  *
  * @author gabriel
  */
@@ -58,6 +58,11 @@ class Post extends Model
                 'source' => 'title'
             ]
         ];
+    }
+    
+    public function categories()
+    {
+        return $this->morphToMany('CodePress\CodeCategory\Models\Category', 'categorizable', 'codepress_categorizables');
     }
 
 }

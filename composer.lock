@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17d4a784a9c30e3c8d0f98e9075e3d14",
+    "content-hash": "ef6a1c97e0b76b6bbb8014d5b9e827a2",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1033,6 +1033,60 @@
                 "uuid"
             ],
             "time": "2018-01-20T00:28:24+00:00"
+        },
+        {
+            "name": "schenato/code-category",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schenato/code-category.git",
+                "reference": "a1cb0bbb0812e4e04f0630e042ad09640b8c198d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schenato/code-category/zipball/a1cb0bbb0812e4e04f0630e042ad09640b8c198d",
+                "reference": "a1cb0bbb0812e4e04f0630e042ad09640b8c198d",
+                "shasum": ""
+            },
+            "require": {
+                "cviebrock/eloquent-sluggable": "^4.5",
+                "illuminate/contracts": "^5.6",
+                "illuminate/database": "^5.6",
+                "illuminate/http": "^5.6",
+                "illuminate/support": "^5.6",
+                "illuminate/validation": "^5.6",
+                "php": ">=7.1",
+                "schenato/code-database": "^0.0.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3.6",
+                "phpunit/phpunit": "^7.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CodePress\\CodeCategory\\": "src/CodeCategory/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gabriel Schenato",
+                    "email": "gabriel.schenato@inovadora.com.br"
+                }
+            ],
+            "description": "Schenato.me a package for management categories",
+            "homepage": "https://github.com/schenato",
+            "keywords": [
+                "category",
+                "controller",
+                "laravel"
+            ],
+            "time": "2018-07-10T19:13:31+00:00"
         },
         {
             "name": "schenato/code-database",
