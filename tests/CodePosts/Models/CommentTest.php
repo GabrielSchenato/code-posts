@@ -101,4 +101,24 @@ class CommentTest extends AbstractTestCase
         $comment->content = null;
         $this->assertFalse($comment->isValid());
     }
+    
+    public function test_can_force_delete_all_from_relationship()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
+        $post->comments()->forceDelete();
+        $this->assertCount(0, $post->comments()->get());
+    }
+    
+    public function test_can_restore_deletes_all_from_relationship()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $comment1 = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        $comment2 = Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
+        $comment1->delete();
+        $comment2->delete();
+        $post->comments()->restore();
+        $this->assertCount(2, $post->comments()->get());
+    }
 }
