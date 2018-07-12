@@ -5,5 +5,6 @@
 
 <div class="form-group">
     {!! Form::label('Content', 'Content:') !!}
-    {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+    {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'mytiny']) !!}
+    @include('tinymce::tpl')
 </div>

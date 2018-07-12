@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36d0f9bc1cb7d6f271b6043146c3f740",
+    "content-hash": "d6bf24ccee9dd3f6715574f3095e97b0",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -70,6 +70,55 @@
                 "slugify"
             ],
             "time": "2018-01-22T09:00:48+00:00"
+        },
+        {
+            "name": "codeedu/laravel-tinymce",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeedu/laravel-tinymce.git",
+                "reference": "0590b0b5e48feb33bf19decd84816b6cd0b8e6ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeedu/laravel-tinymce/zipball/0590b0b5e48feb33bf19decd84816b6cd0b8e6ce",
+                "reference": "0590b0b5e48feb33bf19decd84816b6cd0b8e6ce",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ktquez\\Tinymce\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alan Albuquerque: ktquez",
+                    "email": "ktquez@gmail.com"
+                },
+                {
+                    "name": "Luiz Carlos",
+                    "email": "argentinaluiz@gmail.com"
+                }
+            ],
+            "description": "TinyMCE editor for Laravel and Lumen Framework",
+            "homepage": "https://github.com/codeedu/laravel-tinymce",
+            "keywords": [
+                "WYSIWYG",
+                "ckeditor",
+                "editor",
+                "laravel",
+                "lumen",
+                "textarea",
+                "tinymce"
+            ],
+            "support": {
+                "source": "https://github.com/codeedu/laravel-tinymce/tree/master"
+            },
+            "time": "2016-03-22T18:59:28+00:00"
         },
         {
             "name": "cviebrock/eloquent-sluggable",
@@ -3903,7 +3952,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "codeedu/laravel-tinymce": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

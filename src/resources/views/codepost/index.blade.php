@@ -28,7 +28,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Content</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,7 +36,6 @@
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ str_limit($post->content, 80) }}...</td>
                                 <td>
                                     <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-outline-primary">Edit post</a>
                                     {!! Form::model($post, ['route' => ['admin.posts.destroy', $post->id], 'method' => 'delete', 'style' => 'display: inline;']) !!}
