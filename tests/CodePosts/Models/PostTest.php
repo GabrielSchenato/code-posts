@@ -133,4 +133,25 @@ class PostTest extends AbstractTestCase
         $this->assertTrue($post->trashed());
         $this->assertCount(0, Post::all());
     }
+    
+    public function test_can_get_rows_deleted()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        Post::create(['title' => 'Post Test 2', 'content' => 'Conteudo do post 2']);
+        $post->delete();
+        $posts = Post::onlyTrashed()->get();
+        $this->assertEquals(1, $posts[0]->id);
+        $this->assertEquals('Post Test', $posts[0]->title);
+    }
+    
+    public function test_can_get_rows_deleted_and_activated()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        Post::create(['title' => 'Post Test 2', 'content' => 'Conteudo do post 2']);
+        $post->delete();
+        $posts = Post::withTrashed()->get();
+        $this->assertCount(2, $posts);
+        $this->assertEquals(1, $posts[0]->id);
+        $this->assertEquals('Post Test', $posts[0]->title);
+    }
 }
