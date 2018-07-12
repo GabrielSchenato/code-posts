@@ -154,4 +154,21 @@ class PostTest extends AbstractTestCase
         $this->assertEquals(1, $posts[0]->id);
         $this->assertEquals('Post Test', $posts[0]->title);
     }
+    
+    public function test_can_force_delete()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post->forceDelete();
+        $this->assertCount(0, Post::all());
+    }
+    
+    public function test_can_restore_rows_from_deleted()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post->delete();
+        $post->restore();
+        $post = Post::find(1);
+        $this->assertEquals(1, $post->id);
+        $this->assertEquals('Post Test', $post->title);
+    }
 }
