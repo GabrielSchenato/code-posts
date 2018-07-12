@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Validation\Validator;
 use CodePress\CodeCategory\Models\Category;
+use CodePress\CodeTag\Models\Tag;
 
 /**
  * Description of Post
@@ -62,6 +63,11 @@ class Post extends Model
     public function categories()
     {
         return $this->morphToMany(Category::class, 'categorizable', 'codepress_categorizables');
+    }
+    
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable', 'codepress_taggables');
     }
 
     public function comments()
