@@ -4,6 +4,7 @@ namespace CodePress\CodePosts\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Validation\Validator;
 use CodePress\CodeCategory\Models\Category;
 use CodePress\CodeTag\Models\Tag;
@@ -16,9 +17,10 @@ use CodePress\CodeTag\Models\Tag;
 class Post extends Model
 {
 
-    use Sluggable;
+    use Sluggable, SoftDeletes;
 
     protected $table = "codepress_posts";
+    protected $dates = ['deleted_at'];
     protected $fillable = [
         'title', 'content', 'slug'
     ];
