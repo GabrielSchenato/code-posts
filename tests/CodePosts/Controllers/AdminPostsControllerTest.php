@@ -50,14 +50,12 @@ class AdminPostsControllerTest extends AbstractTestCase
         $controller = new AdminPostsController($responseFactory, $repository);
         $html = m::mock();
         
-        $postsResult = ['post1', 'post2'];
         $repositoryResult = ['post1'];
         
-        $repository->shouldReceive('all')->andReturn($postsResult);
         $repository->shouldReceive('find')->with(1)->andReturn($repositoryResult);
         
         $responseFactory->shouldReceive('view')
-                ->with('codepost::show', ['category' => $repositoryResult, 'posts' => $postsResult])
+                ->with('codepost::show', ['post' => $repositoryResult])
                 ->andReturn($html);
 
         $this->assertEquals($controller->show(1), $html);

@@ -125,4 +125,12 @@ class PostTest extends AbstractTestCase
         $this->assertEquals('Comentario 1 do meu post', $comments[0]->content);
         $this->assertEquals('Comentario 2 do meu post', $comments[1]->content);
     }
+    
+    public function test_can_soft_delete()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post->delete();
+        $this->assertTrue($post->trashed());
+        $this->assertCount(0, Post::all());
+    }
 }

@@ -26,7 +26,8 @@
         "schenato/code-database": "^0.0.1",
         "schenato/code-category": "^0.0.2",
         "schenato/code-tag": "^0.0.1",
-        "codeedu/laravel-tinymce": "dev-master"
+        "codeedu/laravel-tinymce": "dev-master",
+        "doctrine/dbal": "^2.7"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.2",
