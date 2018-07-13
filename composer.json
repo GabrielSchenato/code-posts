@@ -23,9 +23,6 @@
         "illuminate/database": "^5.6",
         "illuminate/validation": "^5.6",
         "cviebrock/eloquent-sluggable": "^4.5",
-        "schenato/code-database": "dev-master",
-        "schenato/code-category": "dev-master",
-        "schenato/code-tag": "dev-master",
         "codeedu/laravel-tinymce": "dev-master",
         "doctrine/dbal": "^2.7"
     },
@@ -36,7 +33,10 @@
     },
     "autoload": {
         "psr-4": {
-            "CodePress\\CodePosts\\": "src/CodePosts/"
+            "CodePress\\CodePosts\\": "src/CodePosts/",
+            "CodePress\\CodeDatabase\\": "../codedatabase/src/CodeDatabase/",
+            "CodePress\\CodeCategory\\": "../codecategory/src/CodeCategory/",
+            "CodePress\\CodeTag\\": "../codetag/src/CodeTag/"
         }
     },
     "repositories": [
