@@ -12,16 +12,11 @@
                         {{ session('status') }}
                     </div>
                     @endif
-
-
-                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">Create Post</a>
-                    <a href="{{ route('admin.posts.deleted') }}" class="btn btn-dark btn-sm">Deleted Posts</a>
-
                     <br>
                     <br>
                     <hr>
 
-                    <h4>Posts</h4>
+                    <h4>Deleted Posts</h4>
 
 
                     <table class="table">
@@ -38,10 +33,7 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>
-                                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-outline-primary">Edit post</a>
-                                    {!! Form::model($post, ['route' => ['admin.posts.destroy', $post->id], 'method' => 'delete', 'style' => 'display: inline;']) !!}
-                                        {!! Form::submit('Delete post', ['class' => 'btn btn-outline-danger']) !!}
-                                    {!! Form::close() !!}
+                                    <a href="{{ route('admin.posts.restore', $post->id) }}" class="btn btn-outline-warning">Restore post</a>
                                 </td>
                             </tr>
                             @endforeach
