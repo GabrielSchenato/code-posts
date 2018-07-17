@@ -11,3 +11,16 @@ Route::name('admin.')
                 'posts' => 'AdminPostsController'
             ]);
         });
+        
+Route::name('admin.')
+        ->prefix('admin/')
+        ->middleware('web', 'auth')
+        ->namespace('CodePress\CodePosts\Controllers')
+        ->group(function () {
+            Route::get('comments/deleted', 'AdminCommentsController@deleted')->name('comments.deleted');
+            Route::get('comments/deleted/restore/{comment}', 'AdminCommentsController@restore')->name('comments.restore');
+            Route::resources([
+                'comments' => 'AdminCommentsController'
+            ]);
+        });
+

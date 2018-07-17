@@ -13,19 +13,14 @@
                     </div>
                     @endif
 
-                    <h4>Category - {{ $category->name }}</h4>
-                    {!! Form::model($category) !!}
-                    
-                    <fieldset disabled>
+                    <h2>Post - {{ $post->title }}</h2>
 
-                    @include('codecategory::_form')
-                    
-                    </fieldset>
-
-                    {!! Form::close() !!}
+                        <p>{!! $post->content !!}</p>
+                        
                 </div>
             </div>
         </div>
     </div>
+    @include('codepost::_comment')
 </div>
 @endsection

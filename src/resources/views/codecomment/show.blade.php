@@ -13,17 +13,19 @@
                     </div>
                     @endif
 
-                    <h4>Edit Post {{ $post->name }}</h4>
-                    {!! Form::model($post, ['route' => ['admin.posts.update', $post->id], 'method' => 'put']) !!}
+                    <h4>Comment from post - {{ $comment->post['title'] }}</h4>
+                    {!! Form::model($comment) !!}
 
-                    @include('codepost::_form')
+                    <fieldset disabled>
 
-                    <div class="form-group">
-                        {!! Form::submit('Edit Post', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
-                    </div>
+                        {!! Form::label('Content', 'Content:') !!}
+                        {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
+
+                    </fieldset>
 
                     {!! Form::close() !!}
                 </div>
+                <a href="{{ route('admin.comments.index') }}" class="btn btn-secondary btn-sm">Back to Comments</a>
             </div>
         </div>
     </div>
