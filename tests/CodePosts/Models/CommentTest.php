@@ -121,4 +121,55 @@ class CommentTest extends AbstractTestCase
         $post->comments()->restore();
         $this->assertCount(2, $post->comments()->get());
     }
+    
+    public function test_can_soft_delete()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        $comment->delete();
+        $this->assertTrue($comment->trashed());
+        $this->assertCount(0, Comment::all());
+    }
+    
+    public function test_can_get_rows_deleted()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
+        $comment->delete();
+        $comments = Comment::onlyTrashed()->get();
+        $this->assertEquals(1, $comments[0]->id);
+        $this->assertEquals('Conteudo do comment 1', $comments[0]->content);
+    }
+    
+    public function test_can_get_rows_deleted_and_activated()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
+        $comment->delete();
+        $comments = Comment::withTrashed()->get();
+        $this->assertCount(2, $comments);
+        $this->assertEquals(1, $comments[0]->id);
+        $this->assertEquals('Conteudo do comment 1', $comments[0]->content);
+    }
+    
+    public function test_can_force_delete()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        $comment->forceDelete();
+        $this->assertCount(0, Comment::all());
+    }
+    
+    public function test_can_restore_rows_from_deleted()
+    {
+        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
+        $comment->delete();
+        $comment->restore();
+        $comment = Comment::find(1);
+        $this->assertEquals(1, $comment->id);
+        $this->assertEquals('Conteudo do comment 1', $comment->content);
+    }
 }
