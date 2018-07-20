@@ -16,7 +16,16 @@
                     <h4>Create Post</h4>
                     {!! Form::open(['route' => 'admin.posts.store', 'method' => 'post']) !!}
 
-                    @include('codepost::_form')
+                    <div class="form-group">
+                        {!! Form::label('Title', 'Title:') !!}
+                        {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::label('Content', 'Content:') !!}
+                        {!! Form::textarea('content', null, ['class' => 'form-control', 'id' => 'mytiny']) !!}
+                        @include('tinymce::tpl')
+                    </div>
 
                     <div class="form-group">
                         {!! Form::submit('Create Post', ['class' => 'btn btn-primary btn-lg btn-block']) !!}

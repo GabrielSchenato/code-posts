@@ -22,7 +22,7 @@ class PostRepositoryEloquent extends AbstractRepository implements PostRepositor
     {
         $post = $this->find($id);
         $post->state = $state;
-        $post->save;
+        $post->save();
         return $post;
     }
 
