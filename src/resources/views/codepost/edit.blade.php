@@ -44,13 +44,15 @@
                     </div>
 
                     {!! Form::close() !!}
-
+                    
+                    @can('publish_post')
                     {!! Form::model($post, ['route' => ['admin.posts.update_state', $post->id], 'method' => 'patch']) !!}
                     <div class="form-group">
                         {!! Form::hidden('state', $state) !!}
                         {!! Form::submit("$textState", ['class' => "btn btn-$classState btn-lg btn-block text-white"]) !!}
                     </div>
                     {!! Form::close() !!}
+                    @endcan
                 </div>
             </div>
         </div>
