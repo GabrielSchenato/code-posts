@@ -16,6 +16,8 @@ use CodePress\CodeTag\Models\Tag;
  */
 class Post extends Model
 {
+    const STATE_PUBLISHED = 1;
+    const STATE_DRAFT = 2;
 
     use Sluggable, SoftDeletes;
 
