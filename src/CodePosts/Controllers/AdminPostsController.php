@@ -87,6 +87,13 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.posts.index');
     }
     
+    public function updateState(Request $request, int $id)
+    {
+        $this->authorize('publish_post');
+        $this->repository->updateState($id, $request->get('state'));
+        return redirect()->route('admin.posts.edit', ['id' => $id]);
+    }
+    
     private function auth()
     {
         $this->authorize('access_posts');

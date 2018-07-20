@@ -7,6 +7,7 @@ Route::name('admin.')
         ->group(function () {
             Route::get('posts/deleted', 'AdminPostsController@deleted')->name('posts.deleted');
             Route::get('posts/deleted/restore/{post}', 'AdminPostsController@restore')->name('posts.restore');
+            Route::patch('posts/update-state/{post}', 'AdminPostsController@updateState')->name('posts.update_state');
             Route::resources([
                 'posts' => 'AdminPostsController'
             ]);

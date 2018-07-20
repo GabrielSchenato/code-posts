@@ -12,4 +12,6 @@ use CodePress\CodeDatabase\Contracts\CriteriaCollectionInterface;
  */
 interface PostRepositoryInterface extends RepositoryInterface, CriteriaCollectionInterface
 {
+
+    public function updateState(int $id, $state);
 }
