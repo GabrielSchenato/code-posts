@@ -17,5 +17,15 @@ class CommentRepositoryEloquent extends AbstractRepository implements CommentRep
     {
         return Comment::class;
     }
+    
+    public function create(array $data)
+    {
+        /** @var Comment $comment */
+        $comment = parent::create($data);
+        $comment->user()->associate($data['user']);
+        $comment->save();
+        
+        return $comment;
+    }
 
 }

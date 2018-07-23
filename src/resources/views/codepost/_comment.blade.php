@@ -24,7 +24,7 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">Gabriel</h4>
+                    <h4 class="media-heading">{{ $comment->user->name }}</h4>
                     <p>{{ $comment->content }}</p>
 
                 </div>

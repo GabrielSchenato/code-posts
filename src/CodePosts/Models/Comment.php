@@ -5,6 +5,7 @@ namespace CodePress\CodePosts\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use CodePress\CodeUser\Models\User;
 
 /**
  * Description of Comment
@@ -50,6 +51,10 @@ class Comment extends Model
         return true;
     }
     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     
     public function post()
     {
