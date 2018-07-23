@@ -14,9 +14,12 @@
                     @endif
 
                     <h2>Post - {{ $post->title }}</h2>
+                    <div class="text-center p-3 mb-2 bg-dark text-white">
+                        <strong>Author: </strong><a href="#" class="badge badge-light">{{ $post->user->name }}</a>
+                    </div>
 
-                        <p>{!! $post->content !!}</p>
-                        
+                    <p>{!! $post->content !!}</p>
+
                 </div>
             </div>
         </div>

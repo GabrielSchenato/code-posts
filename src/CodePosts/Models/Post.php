@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Validation\Validator;
 use CodePress\CodeCategory\Models\Category;
 use CodePress\CodeTag\Models\Tag;
+use CodePress\CodeUser\Models\User;
 
 /**
  * Description of Post
@@ -63,6 +64,11 @@ class Post extends Model
             ]
         ];
     }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function categories()
     {
@@ -77,6 +83,16 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    
+    public function getCategoriesArrayAttribute()
+    {
+        return $this->categories->pluck('id')->toArray();
+    }
+    
+    public function getTagsArrayAttribute()
+    {
+        return $this->tags->pluck('id')->toArray();
     }
 
 }

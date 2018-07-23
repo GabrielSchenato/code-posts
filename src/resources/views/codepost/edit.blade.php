@@ -21,6 +21,9 @@
                     @endif
 
                     <h4>Edit Post {{ $post->name }}</h4>
+                    <div class="text-center p-3 mb-2 bg-dark text-white">
+                    <strong>Author: </strong><a href="#" class="badge badge-light">{{ $post->user->name }}</a>
+                    </div>
                     <h3>
                         <span class="badge badge-pill badge-{{$post->state == $post::STATE_PUBLISHED ? "success" : "warning"}} text-white">
                             {{ $post->state == $post::STATE_PUBLISHED ? "Published" : "Draft" }}
@@ -31,6 +34,16 @@
                     <div class="form-group">
                         {!! Form::label('Title', 'Title:') !!}
                         {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('categories', 'Categories:') !!}
+                        {!! Form::select('categories_array', $categories, null, ['name' => 'categories[]', 'class' => 'form-control', 'multiple' => 'true']) !!}
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('tags', 'Tags:') !!}
+                        {!! Form::select('tags_array', $tags, null, ['name' => 'tags[]', 'class' => 'form-control', 'multiple' => 'true']) !!}
                     </div>
 
                     <div class="form-group">

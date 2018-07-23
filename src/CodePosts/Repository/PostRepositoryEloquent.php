@@ -25,5 +25,32 @@ class PostRepositoryEloquent extends AbstractRepository implements PostRepositor
         $post->save();
         return $post;
     }
+    
+    public function create(array $data)
+    {
+        /** @var Post $post */
+        $post = parent::create($data);
+        $post->user()->associate($data['user']);
+        $post->save();
+        
+        $categories = $data['categories'];
+        $tags = $data['tags'];
+        $post->categories()->sync($categories);
+        $post->tags()->sync($tags);
+        
+        return $post;
+    }
+    
+    public function update(array $data, int $id)
+    {
+        /** @var Post $post */
+        $post = parent::update($data, $id);
+        $categories = $data['categories'];
+        $tags = $data['tags'];
+        $post->categories()->sync($categories);
+        $post->tags()->sync($tags);
+        
+        return $post;
+    }
 
 }

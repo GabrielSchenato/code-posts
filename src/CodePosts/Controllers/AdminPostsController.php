@@ -3,8 +3,11 @@
 namespace CodePress\CodePosts\Controllers;
 
 use CodePress\CodePosts\Repository\PostRepositoryInterface;
+use CodePress\CodeTag\Repository\TagRepositoryInterface;
+use CodePress\CodeCategory\Repository\CategoryRepositoryInterface;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Description of AdminPostsController
@@ -16,10 +19,14 @@ class AdminPostsController extends Controller
 
     private $response;
     private $repository;
+    private $tagRepository;
+    private $categoryRepository;
 
-    public function __construct(ResponseFactory $response, PostRepositoryInterface $repository)
+    public function __construct(ResponseFactory $response, PostRepositoryInterface $repository, TagRepositoryInterface $tagRepository, CategoryRepositoryInterface $categoryRepository)
     {
         $this->repository = $repository;
+        $this->tagRepository = $tagRepository;
+        $this->categoryRepository = $categoryRepository;
         $this->response = $response;
     }
 
@@ -37,12 +44,17 @@ class AdminPostsController extends Controller
 
     public function create()
     {
-        return $this->response->view('codepost::create');
+        $categories = $this->categoryRepository->all()->pluck('name', 'id');
+        $tags = $this->tagRepository->all()->pluck('name', 'id');
+        
+        return $this->response->view('codepost::create', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
     {
-        $this->repository->create($request->all());
+        $data = $request->all();
+        $data['user'] = Auth::user();
+        $this->repository->create($data);
 
         return redirect()->route('admin.posts.index');
     }
@@ -50,7 +62,10 @@ class AdminPostsController extends Controller
     public function edit(int $id)
     {
         $post = $this->repository->find($id);
-        return $this->response->view('codepost::edit', compact('post'));
+        $categories = $this->categoryRepository->all()->pluck('name', 'id');
+        $tags = $this->tagRepository->all()->pluck('name', 'id');
+        
+        return $this->response->view('codepost::edit', compact('post', 'categories', 'tags'));
     }
 
     public function update(int $id, Request $request)
