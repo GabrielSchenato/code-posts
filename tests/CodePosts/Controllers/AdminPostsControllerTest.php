@@ -3,6 +3,8 @@
 namespace CodePress\CodePosts\Tests\Controllers;
 
 use CodePress\CodePosts\Repository\PostRepositoryEloquent;
+use CodePress\CodeTag\Repository\TagRepositoryInterface;
+use CodePress\CodeCategory\Repository\CategoryRepositoryInterface;
 use CodePress\CodePosts\Tests\AbstractTestCase;
 use CodePress\CodePosts\Controllers\AdminPostsController;
 use CodePress\CodePosts\Controllers\Controller;
@@ -21,7 +23,9 @@ class AdminPostsControllerTest extends AbstractTestCase
     {
         $repository = m::mock(PostRepositoryEloquent::class);
         $responseFactory = m::mock(ResponseFactory::class);
-        $controller = new AdminPostsController($responseFactory, $repository);
+        $tagRepository = m::mock(TagRepositoryInterface::class);
+        $categoryRepository = m::mock(CategoryRepositoryInterface::class);
+        $controller = new AdminPostsController($responseFactory, $repository, $tagRepository, $categoryRepository);
 
         $this->assertInstanceOf(Controller::class, $controller);
     }
@@ -30,7 +34,9 @@ class AdminPostsControllerTest extends AbstractTestCase
     {
         $repository = m::mock(PostRepositoryEloquent::class);
         $responseFactory = m::mock(ResponseFactory::class);
-        $controller = new AdminPostsController($responseFactory, $repository);
+        $tagRepository = m::mock(TagRepositoryInterface::class);
+        $categoryRepository = m::mock(CategoryRepositoryInterface::class);
+        $controller = new AdminPostsController($responseFactory, $repository, $tagRepository, $categoryRepository);
         $html = m::mock();
         
         $postsResult = ['post1', 'post2'];
@@ -47,7 +53,9 @@ class AdminPostsControllerTest extends AbstractTestCase
     {
         $repository = m::mock(PostRepositoryEloquent::class);
         $responseFactory = m::mock(ResponseFactory::class);
-        $controller = new AdminPostsController($responseFactory, $repository);
+        $tagRepository = m::mock(TagRepositoryInterface::class);
+        $categoryRepository = m::mock(CategoryRepositoryInterface::class);
+        $controller = new AdminPostsController($responseFactory, $repository, $tagRepository, $categoryRepository);
         $html = m::mock();
         
         $repositoryResult = ['post1'];
