@@ -75,7 +75,7 @@ class CommentTest extends AbstractTestCase
 
     public function test_check_if_a_comment_can_be_persisted()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment = Comment::create(['content' => 'Conteudo do comment', 'post_id' => $post->id]);
         $this->assertEquals('Conteudo do comment', $comment->content);
 
@@ -104,7 +104,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_force_delete_all_from_relationship()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
         $post->comments()->forceDelete();
@@ -113,7 +113,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_restore_deletes_all_from_relationship()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment1 = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         $comment2 = Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
         $comment1->delete();
@@ -124,7 +124,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_soft_delete()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         $comment->delete();
         $this->assertTrue($comment->trashed());
@@ -133,7 +133,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_get_rows_deleted()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
         $comment->delete();
@@ -144,7 +144,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_get_rows_deleted_and_activated()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         Comment::create(['content' => 'Conteudo do comment 2', 'post_id' => $post->id]);
         $comment->delete();
@@ -156,7 +156,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_force_delete()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         $comment->forceDelete();
         $this->assertCount(0, Comment::all());
@@ -164,7 +164,7 @@ class CommentTest extends AbstractTestCase
     
     public function test_can_restore_rows_from_deleted()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $comment = Comment::create(['content' => 'Conteudo do comment 1', 'post_id' => $post->id]);
         $comment->delete();
         $comment->restore();

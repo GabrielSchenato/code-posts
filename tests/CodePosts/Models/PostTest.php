@@ -78,7 +78,7 @@ class PostTest extends AbstractTestCase
 
     public function test_check_if_a_post_can_be_persisted()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $this->assertEquals('Post Test', $post->title);
         $this->assertEquals('Conteudo do post', $post->content);
 
@@ -105,9 +105,9 @@ class PostTest extends AbstractTestCase
     
     public function test_can_sluggable()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $this->assertEquals($post->slug, "post-test");
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $this->assertEquals($post->slug, "post-test-1");
         $post = Post::whereSlug("post-test-1")->get()->first();   
         $this->assertInstanceOf(Post::class, $post);
@@ -115,7 +115,7 @@ class PostTest extends AbstractTestCase
     
     public function test_can_add_comments()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $post->comments()->create(['content' => 'Comentario 1 do meu post']);
         $post->comments()->create(['content' => 'Comentario 2 do meu post']);
         
@@ -128,7 +128,7 @@ class PostTest extends AbstractTestCase
     
     public function test_can_soft_delete()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $post->delete();
         $this->assertTrue($post->trashed());
         $this->assertCount(0, Post::all());
@@ -136,8 +136,8 @@ class PostTest extends AbstractTestCase
     
     public function test_can_get_rows_deleted()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
-        Post::create(['title' => 'Post Test 2', 'content' => 'Conteudo do post 2']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
+        Post::create(['title' => 'Post Test 2', 'image' => '123456', 'content' => 'Conteudo do post 2']);
         $post->delete();
         $posts = Post::onlyTrashed()->get();
         $this->assertEquals(1, $posts[0]->id);
@@ -146,8 +146,8 @@ class PostTest extends AbstractTestCase
     
     public function test_can_get_rows_deleted_and_activated()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
-        Post::create(['title' => 'Post Test 2', 'content' => 'Conteudo do post 2']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
+        Post::create(['title' => 'Post Test 2', 'image' => '123456', 'content' => 'Conteudo do post 2']);
         $post->delete();
         $posts = Post::withTrashed()->get();
         $this->assertCount(2, $posts);
@@ -157,14 +157,14 @@ class PostTest extends AbstractTestCase
     
     public function test_can_force_delete()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $post->forceDelete();
         $this->assertCount(0, Post::all());
     }
     
     public function test_can_restore_rows_from_deleted()
     {
-        $post = Post::create(['title' => 'Post Test', 'content' => 'Conteudo do post']);
+        $post = Post::create(['title' => 'Post Test', 'image' => '123456', 'content' => 'Conteudo do post']);
         $post->delete();
         $post->restore();
         $post = Post::find(1);
