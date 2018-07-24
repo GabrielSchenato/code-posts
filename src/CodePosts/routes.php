@@ -24,4 +24,13 @@ Route::name('admin.')
                 'comments' => 'AdminCommentsController'
             ]);
         });
-
+        
+Route::middleware('web')
+        ->namespace('CodePress\CodePosts\Controllers')
+        ->group(function () {
+            Route::get('/', 'SearchController@index')->name('home');
+            Route::get('search/', 'SearchController@search')->name('search');
+            Route::get('search/category/{slug}', 'SearchController@searchByCategory')->name('search.category');
+            Route::get('search/tag/{slug}', 'SearchController@searchByTag')->name('search.tag');
+            Route::get('post/{slug}', 'SearchController@searchPostBySlug')->name('search.post.slug');
+        });

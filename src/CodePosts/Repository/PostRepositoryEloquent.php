@@ -52,5 +52,11 @@ class PostRepositoryEloquent extends AbstractRepository implements PostRepositor
         
         return $post;
     }
+    
+    public function findWhere($field, $value)
+    {
+        $this->applyCriteria();
+        return $this->model->where($field, 'LIKE', $value)->get();
+    }
 
 }

@@ -25,7 +25,7 @@ class Post extends Model
     protected $table = "codepress_posts";
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'title', 'content', 'slug'
+        'title', 'image', 'content', 'slug'
     ];
     private $validator;
 

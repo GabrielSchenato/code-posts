@@ -14,4 +14,5 @@ interface PostRepositoryInterface extends RepositoryInterface, CriteriaCollectio
 {
 
     public function updateState(int $id, $state);
+    public function findWhere($field, $value);
 }

@@ -22,6 +22,7 @@ class CodePostServiceProvider extends ServiceProvider
         $this->publishes([__DIR__ . '/../../resources/migrations/' => base_path('database/migrations')], 'migrations');
         $this->loadViewsFrom(__DIR__ . '/../../resources/views/codepost', 'codepost');
         $this->loadViewsFrom(__DIR__ . '/../../resources/views/codecomment', 'codecomment');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views/codefront', 'codefront');
         require __DIR__ . '/../routes.php';
     }
 

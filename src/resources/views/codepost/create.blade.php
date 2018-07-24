@@ -14,11 +14,16 @@
                     @endif
 
                     <h4>Create Post</h4>
-                    {!! Form::open(['route' => 'admin.posts.store', 'method' => 'post']) !!}
+                    {!! Form::open(['route' => 'admin.posts.store', 'method' => 'post', 'files' => 'true']) !!}
 
                     <div class="form-group">
                         {!! Form::label('Title', 'Title:') !!}
                         {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                    </div>
+                    
+                    <div class="form-group">
+                        {!! Form::label('image', 'Image:') !!}
+                        {!! Form::file('image', ['class' => 'form-control']) !!}
                     </div>
                     
                     <div class="form-group">

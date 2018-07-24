@@ -53,7 +53,13 @@ class AdminPostsController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        
         $data['user'] = Auth::user();
+        
+        $file = $request->file('image');
+        $data['image'] = file_get_contents($file);
+        $data['image'] = base64_encode($data['image']);
+        
         $this->repository->create($data);
 
         return redirect()->route('admin.posts.index');
